@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="dummyforgit-test-suite.xml" />
+	<munit:test name="dummyforgit-test-suite-dummyforgitFlowTest" doc:id="c9b0db1e-7c2c-42d9-b727-89559cd2007c" description="Test">
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to dummyforgitFlow" doc:id="ba4f2d1c-054b-45bc-b72d-95bab1fe908c" name="dummyforgitFlow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-equals doc:name="Assert equals" doc:id="a7c2bbea-c677-4ced-b975-76aee30f08fb" actual="#[payload]" expected='#["Welcome in GitHub world"]' message="#[&quot;Output doesn't match the expected&quot;]"/>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="dummyforgit-test-suite-dummyforgitFlowTest1" doc:id="23cb525c-f53c-4aa6-b95b-d75b57a196c5" description="Test">
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to dummyforgitFlow" doc:id="3f921fc4-7e12-47e5-ac6a-15e994ef0600" name="dummyforgitFlow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-that doc:name="Assert that" doc:id="11786284-1df5-4309-80b3-7fd7e800ef10" expression="#[payload]" is="#[MunitTools::startsWith('Welcome')]" message="#[&quot;Payload doesn't match with Welcome&quot;]"/>
+		</munit:validation>
+	</munit:test>
+
+
+</mule>
